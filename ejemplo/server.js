@@ -9,7 +9,7 @@ var session = require('express-session');
 var config = require('./config/database');
 var passport = require('passport');
 var bcrypt = require('bcryptjs');
-let Administrator = require('../models/administrator');
+let Administrator = require('./models/administrator');
 const port = process.env.PORT || 3001;
 
 /*
@@ -66,12 +66,7 @@ app.use(session({
 //Express validator middleware
 app.use(expressValidator());
 
-//Express messagees middleware
-app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
+
 
 //Passport config
 require('./config/passport')(passport);

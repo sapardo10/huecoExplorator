@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NameForm from './login.js';
 
 class App extends Component {
   state = {
@@ -24,29 +25,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <form action="/login" method="post">
-          <div>
-            <label>Username:</label>
-            <input type="text" name="username"/>
-          </div>
-          <div>
-            <label>Password:</label>
-            <input type="password" name="password"/>
-          </div>
-          <div>
-            <input type="submit" value="Log In"/>
-          </div>
-          </form>
-        <p className="App-intro">
-          {this.state.response}
-        </p>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="h3 mb-3 font-weight-normal">Bienvenido a huecoExplorator</h1>
+
+          </header>
+            <br/>  <br/>  <br/>
+          <div className="container">
+          <NameForm/>
+          <p className="App-intro">
+            {this.state.response}
+          </p>
+        </div>
       </div>
     );
   }
 }
+
+
 
 export default App;
