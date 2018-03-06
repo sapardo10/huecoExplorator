@@ -99,7 +99,50 @@ app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
-app.post('/login',function(req,res,next){
+
+//Register process
+app.post('/register',function(req,res){
+  console.log(req);
+  const username = req.body.username;
+  const password = req.body.password;
+
+  req.checkBody('username', 'El correo no puede ser vacio').notEmpty();
+  req.checkBody('password', 'La contraseña no puede ser vacia').notEmpty();
+
+  let errors = req.validationErrors();
+
+  if(errors){
+    console.log(errors)
+  }
+  else{
+    let newAdministrator = new Administrator({
+      username:username,
+      password:password,
+    });
+
+    bcrypt.genSalt(10,function(err,salt){
+      bcrypt.hash(newAdministrator.password,salt, function(err,hash){
+        if(err){
+          console.log(err);
+        }
+        else{
+          newAdministrator.password = hash;
+          newAdministrator.save(function(err){
+            if(err){
+              console.log(err);
+            }
+            else{
+              res.redirect('login');
+            }
+          });
+
+        }
+      });
+    });
+  }
+});
+
+app.post('/new/user',function(req,res,next){
   passport.authenticate('local',{
     successRedirect:'/conjuntos',
     failureRedirect:'/administrators/login',

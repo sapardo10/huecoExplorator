@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import NameForm from './login.js';
+import NameForm from './register.js';
 
 class App extends Component {
   state = {
@@ -21,6 +21,8 @@ class App extends Component {
 
     return body;
   };
+
+
 
   render() {
     return (
