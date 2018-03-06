@@ -1,0 +1,27 @@
+{
+  "name": "ejemplo",
+  "version": "1.0.0",
+  "description":
+    "Para encontrar los huecos en comun IYKWIM",
+  "author": {
+    "name": "sergio Pardo",
+    "email": "carnifis@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sapardo10/huecoExplorator"
+  },
+  "keywords": ["node", "express", "create-react-app"]
+}
