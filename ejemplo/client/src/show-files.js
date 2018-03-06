@@ -12,7 +12,9 @@ class List extends Component {
     this.callApi()
     .then(res => this.setState({ response: res.express }))
     .catch(err => console.log(err));
-  }
+
+    console.log(this.state.response);
+  };
 
   callApi = async () => {
     const response = await fetch('/archivos');
@@ -24,7 +26,7 @@ class List extends Component {
   };
 
   render() {
-    return <h1>Hello, {this.state.response}</h1>;
+    return <div>{this.state.response}</div>;
   }
 }
 export default List;
