@@ -14,9 +14,7 @@ const port = process.env.PORT || 3001;
 const formidable = require('formidable');
 const Binary = require('mongodb').Binary;
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-};
+
 
 /*
 -------------------------------------------------------------------------
@@ -188,3 +186,7 @@ app.get('/archivos', (req, res) => {
 });
 
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+};
