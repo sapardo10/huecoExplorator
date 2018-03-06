@@ -11,6 +11,8 @@ var passport = require('passport');
 var bcrypt = require('bcryptjs');
 let Administrator = require('./models/administrator');
 const port = process.env.PORT || 3001;
+const formidable = require('formidable');
+const Binary = require('mongodb').Binary;
 
 /*
 -------------------------------------------------------------------------
@@ -148,4 +150,37 @@ app.post('/new/user',function(req,res,next){
     failureRedirect:'/administrators/login',
     failureFlash: true
   })(req,res,next);
+});
+
+app.post('/archivo',function(req,res,next){
+  var form = new formidable.IncomingForm();
+     form.parse(req, function (err, fields, files) {
+       var data = files[0];
+       var insert_data = {};
+       insert_data.file_data= Binary(data);
+       var collection = db.collection('archivos');
+       collection.insert(insert_data, function(err, result){
+        if (err) {
+           console.log(err);
+         } else{
+           console.log('Exito');
+         }
+       });
+       res.end();
+     });
+});
+
+app.get('/archivos', (req, res) => {
+   var collection = db.collection('archivos');
+  collection.find().toArray(function (err, documents) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+
+    console.log(documents);
+     res.send(documents);
+    }
+});
+
 });

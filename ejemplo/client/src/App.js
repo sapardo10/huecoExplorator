@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NameForm from './register.js';
+import FileForm from './upload.js';
+import List from './show-files.js';
 
 class App extends Component {
   state = {
@@ -37,6 +39,10 @@ class App extends Component {
             <br/>  <br/>  <br/>
           <div className="container">
           <NameForm/>
+          <br/>
+          <FileForm/>
+          <br/>
+          <List/>
           <p className="App-intro">
             {this.state.response}
           </p>
