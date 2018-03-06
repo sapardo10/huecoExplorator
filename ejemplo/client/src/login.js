@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class NameForm extends React.Component {
+class NameForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +15,8 @@ class NameForm extends React.Component {
   }
 
   handleChange(event) {
-      this.setState({username: event.target.username});
+      alert(event.target.value);
+      this.setState({username: event.target.value});
   }
 
   handlePasswordInput(event) {
@@ -26,7 +27,7 @@ class NameForm extends React.Component {
 
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.username + 'with this password' + this.state.password);
+    alert('A name was submitted: ' + this.state.username + ' with this password: ' + this.state.password);
     event.preventDefault();
   }
 
